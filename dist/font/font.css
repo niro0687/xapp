@@ -1,0 +1,23 @@
+@font-face {
+	font-family: 'MDGroteskRegular';
+	src: local('MDGroteskRegular'), url('./MDGroteskRegular.woff') format('woff');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_80134">Text with this font applied</p> */
+.fontsforweb_fontid_80134 {
+	font-family: 'MDGroteskRegular' !important;
+}
+
+* {
+    font-family: 'MDGroteskRegular';
+}
+
+
+h1, h2, h3, h5, h6, h7,
+p, mark, span, em, strong, a,
+input, button, textarea, label,
+div, header, footer, section
+{
+    font-family: 'MDGroteskRegular';
+}
+
+/* Font downloaded from FontsForWeb.com */
