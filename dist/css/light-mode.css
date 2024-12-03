@@ -1,0 +1,374 @@
+
+body {
+    background-color: #EAEAEA;
+}
+:root {
+	--popup-box-bg: #E7E7E7;
+	--bg-tooltip: #E0E0E0;
+}
+.x-loading-page {
+	background: #EAEAEA;
+}
+
+* {
+    color: black;
+}
+
+h1, h2, h3, h5, h6, h7,
+p, mark, span, em, strong, a,
+input, button, textarea, label,
+div, header, footer, section, i
+{
+    color: black;
+}
+.x-alert-btn-normal button {
+	color: #252525;
+}
+.x-low-emphasis {
+	color: #474747;
+}
+
+.x-create-group-conv-box {
+	background: white;
+}
+
+.x-separator {
+	background: #CBCBCB;
+}
+.x-start-conv {
+	background: #F3F3F3;
+}
+.x-start-conv span.li {
+	background: #000000;
+}
+
+.x-right-position .time span,
+.x-right-position .time i.sent,
+.x-right-position .time i.delivered {
+	color: #474747;
+}
+
+.x-message-data.text p.words {
+	color: #040404;
+}
+
+.x-right-position.sending .x-message-data.text,
+.x-right-position.sending .x-message-data.speech,
+.x-right-position.sending .x-message-data.other-file {
+	background: #AFE6FF;
+}
+
+
+.x-right-position .x-message-data.text,
+.x-right-position .x-message-data.other-file,
+.x-right-position .x-message-data.speech {
+	background: linear-gradient(45deg, #00B0FF, #00D0FF);
+}
+
+.x-right-position .x-message-data .speech-data .waves .waves-contents .audio-waves {
+	background: rgba(255,255,255,0.4);
+}
+
+.x-left-position .x-message-data .speech-data .waves .waves-contents .audio-waves {
+	background: rgba(255,255,255,0.4);
+}
+
+.waves .audio-progress {
+	background: black;
+}
+
+.x-message-data.video .video-title .title {
+	color: white;
+}
+.x-message-data.video .video-timer .time-total {
+	color: white;
+}
+.x-message-data.video .play-pause-video i {
+	color: white;
+}
+.x-message-data.video .video-title .video-size {
+	color: #979797;
+}
+.x-left-position .x-message-data.text,
+.x-left-position .x-message-data.other-file,
+.x-left-position .x-message-data.speech {
+	background: #D5D5D5;
+}
+.x-left-position .x-message-data span {
+	color: #676767;
+}
+
+.x-sp-btn {
+    background-color: linear-gradient(to right, );
+}
+.x-sep-connexion {
+	height: 2px;
+}
+.x-btn-disabled {
+    background: #BCBCBC;
+}
+.x-btn-disabled button,
+.x-btn-disabled a, 
+.x-btn-disabled i,
+.x-btn-disabled p {
+    color: #3D3D3D;
+}
+
+.x-btn-none-disabled button,
+.x-btn-none-disabled a,
+.x-btn-none-disabled p,
+.x-btn-none-disabled i {
+	color: #3D3D3D;
+}
+
+
+.x-field-has-bg {
+    background-color: white;
+}
+
+.x-field-no-bg {
+    border: 2px black solid;
+}
+.x-field-blur,
+.x-frame-blur {
+    border: 0.5px solid #94919188;
+}
+
+.x-container-alert {
+    background: #ECECEC;
+}
+.x-container-alert .x-frame-top-style {
+	background: #ECECEC;
+}
+.x-container-alert .x-frame-top-style span {
+	background: #A8A8A8;
+}
+
+.x-alert-btn {
+    border-top: 1px solid #818181;
+}
+
+.x-alert-btn-disabled button {
+    color: #AAAAAA;
+}
+
+
+.x-cover-profile-pic {
+	border: 3px solid #A4A4A4;
+}
+.x-table-frame {
+	background: white;
+}
+
+.x-table-frame td {
+	color: #212121;
+	border-bottom: 1px solid black;
+}
+.x-table-frame th {
+	border-bottom: 2px solid black;
+}
+
+.x-table-frame .x-frame-top-style {
+	background: white;
+}
+.x-table-frame .x-frame-top-style span {
+	background: #C9C9C9;
+}
+
+.x-bd-bottom {
+	border-color: black;
+}
+
+.x-popup .x-container-popup-box {
+	background: var(--popup-box-bg);
+}
+.x-default-popup .x-container-popup-box .x-header-popup-box {
+	background: var(--popup-box-bg);
+	border-bottom: 0.5px black solid;
+}
+
+.x-header-popup-box div p:nth-child(2) {
+	color: #515151;
+}
+
+
+
+.x-line-progress-bar {
+	background: #D5D5D5;
+}
+
+.x-progress-starting {
+	border-color: #D5D5D5;
+}
+.x-aw-h-progress .x-bar {
+	background: #D5D5D5;
+}
+
+.x-profile-item div:nth-child(2) p:nth-child(2) {
+	color: #C0C0C0;
+}
+
+.x-shimmer-loading {
+	background: #C2C2C2;
+}
+
+.x-shimmer-loading span {
+	background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+}
+
+.x-tooltip {
+	background: var(--bg-tooltip);
+}
+
+.x-search,
+.x-search-arrow {
+	background: white;
+}
+
+
+.x-default-focus {
+	border: 1.5px #00E4FF solid;
+}
+.x-default-bold-focus {
+	border: 1.5px #00E4FF solid;
+}
+.x-default-bold-focus input {
+	font-weight: bold;
+}
+
+
+.x-soft-focus {
+	background: #EEFFFC;
+}
+
+.x-soft-shadow-focus {
+	background: #EEFFFC;
+	box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+}
+
+.x-soft-bold-focus {
+	background: #EEFFFC;
+}
+.x-soft-bold-focus input {
+	font-weight: bold;
+}
+.x-soft-shadow-bold-focus {
+	background: #EEFFFC;
+	box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+}
+
+.x-soft-shadow-bold-focus input {
+	font-weight: bold;
+}
+
+.x-shadow-focus,
+.x-shadow-error {
+	box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+}
+
+.x-shadow-bold-focus,
+.x-shadow-bold-error {
+	box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+}
+
+.x-shadow-bold-focus input {
+	font-weight: bold;
+}
+
+.x-default-error {
+	border: 1.5px solid red;
+}
+.x-default-error input {
+	color: red;
+}
+.x-default-bold-error {
+	border: 1.5px solid red;
+}
+.x-default-bold-error input {
+	color: red;
+	font-weight: bold;
+}
+
+.x-soft-error {
+	background: #FFB6B5;
+}
+.x-soft-bold-error {
+	background: #FFB6B5;
+}
+
+.x-soft-bold-error input {
+	font-weight: bold;
+}
+
+.x-soft-shadow-error {
+	background: #FFB6B5;
+	box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+}
+
+.x-soft-shadow-bold-error input {
+	font-weight: bold;
+}
+
+.x-soft-shadow-bold-error {
+	background: #E2F4FF;
+	box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+}
+
+.x-shadow-error input {
+	color: red;
+}
+
+.x-shadow-bold-error input {
+	color: red;
+	font-weight: bold;
+}
+
+
+.x-message-form form {
+	background: #E2E2E2;
+}
+
+.x-message.sending .x-message-data.text .words {
+	color: #3B3B3B;
+}
+
+.x-conversation.seen .name {
+	color: #303030;
+}
+.x-conversation.seen .last-message.text {
+	color: #383838;
+}
+.x-conversation .last-message.file {
+	color: #008EFF;
+}
+
+.x-conversation.seen .time p {
+	color: #383838;
+}
+
+.x-message-form,
+.x-conversation-header {
+	background: #EAEAEA;
+}
+
+.x-conversation-header .status.offline {
+	color: #868686;
+}
+.x-conversation-header .status.online {
+	color: #00FF73;
+	font-weight: 800;
+}
+.x-conversation-header .status.writing {
+	color: #00C8FF;
+	font-weight: 800;
+	font-style: italic;
+}
+
+.x-conv-status {
+	color: #3D3D3D;
+}
+
+
+.x-sharp-header span {
+	background: #BBBBBB;
+}
