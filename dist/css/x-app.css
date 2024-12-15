@@ -164,6 +164,14 @@ li {
 	height: 15px;
 	padding: 4px 0px 0px 0px;
 }
+
+
+.x-start-conv textarea::-webkit-scrollbar {
+	width: 0px;
+}
+
+
+
 .x-start-conv span.li {
 	display: block;
 }
@@ -377,6 +385,13 @@ li {
 	height: 15px;
 	font-size: 15px;
 }
+.x-all-messages.x-all-messages-display::-webkit-scrollbar {
+	width: 0px;
+}
+.x-message-form form textarea::-webkit-scrollbar {
+	width: 0px;
+}
+
 .x-message-form i {
 	font-size: 25px;
 }
@@ -504,6 +519,11 @@ li {
 	color: #00FFE5;
 }
 
+.x-left-position .x-message-data span {
+	margin: 0px;
+	padding: 0px;
+}
+
 .x-message-data.text p.words {
 	font-size: 12px;
 	margin-top: 0px;
@@ -556,7 +576,11 @@ li {
 .x-message-data.other-file .file-detail p:nth-child(1) {
 	font-size: 12px;
 	font-weight: 800;
+	width: 200px;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
+
 .x-message-data.other-file .file-detail p:nth-child(2) {
 	font-size: 9px;
 	margin-top: 2px;
@@ -693,6 +717,13 @@ li {
 	font-size: 10px;
 	margin-left: 7px;
 }
+
+
+.x-left-position .x-message-data .time {
+	padding: 0px;
+	margin-top: 0px;
+}
+
 .x-message .message-date {
 	text-align: center;
 	font-size: 12px;
@@ -801,6 +832,53 @@ textarea {
 
 .x-btn-none {
 	background: none;
+}
+
+
+
+.x-textarea {
+    width: 380px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.x-select {
+	height: 52px;
+    width: 380px;
+    display: flex;
+	cursor: pointer;
+	justify-content: center;
+    align-items: center;
+}
+
+.x-select select:focus {
+	border: none;
+	outline: none;	
+}
+
+.x-select select:hover {
+	border: none;
+}
+
+
+
+.x-select select {
+	font-weight: 800;
+    font-size: 13px;
+	background: none;
+	cursor: pointer;
+	border: none;
+	width: 90%;
+}
+
+
+.x-textarea textarea {
+	font-weight: 800;
+    font-size: 13px;
+	width: 100%;
+	margin: 15px;
 }
 
 .x-field {

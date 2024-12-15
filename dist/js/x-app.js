@@ -995,6 +995,7 @@ function onAudioLoadedMetadata(e) {
 	}, 1000);
 }
 
+
 function onVideoLoadedMetadata(e) {
 	let id = $(e.target).attr("target");
 	let body = document.body;
@@ -1048,6 +1049,14 @@ class XNi {
 		this.message = null;
 		this.ok = null;
 		this.okText = null;
+	}
+
+	getFormData(dict) {
+		let formData = new FormData();
+		Object.entries(dict).forEach(([key, val]) => {
+			formData.append(key, val);
+		})
+		return formData;
 	}
 	
 	escapeHTML(text) {
@@ -2068,3 +2077,10 @@ $(document).on("blur", ".x-search-arrow input", xBlurFieldFunc);
 
 $(document).on("focus", ".x-field input", xFocusFieldFunc);
 $(document).on("blur", ".x-field input", xBlurFieldFunc);
+
+
+$(document).on("focus", ".x-textarea textarea", xFocusFieldFunc);
+$(document).on("blur", ".x-textarea textarea", xBlurFieldFunc);
+
+$(document).on("focus", ".x-select select", xFocusFieldFunc);
+$(document).on("blur", ".x-select select", xBlurFieldFunc);

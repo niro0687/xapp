@@ -54,7 +54,13 @@ function XCreateGroupConvComponent(_ref2) {
   var users = _ref2.users,
     getName = _ref2.getName,
     close = _ref2.close,
+<<<<<<< HEAD
     created = _ref2.created;
+=======
+    created = _ref2.created,
+    token = _ref2.token,
+    projectID = _ref2.projectID;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var _React$useState = React.useState(""),
     _React$useState2 = _slicedToArray(_React$useState, 2),
     name = _React$useState2[0],
@@ -98,11 +104,19 @@ function XCreateGroupConvComponent(_ref2) {
   };
   var request = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+<<<<<<< HEAD
       var date, newConv;
+=======
+      var date, url, newConv, to_send, form, req;
+>>>>>>> 5b71127 (xapp-24.12.15)
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             date = new Date().toISOString();
+<<<<<<< HEAD
+=======
+            url = '/create_group_chat/';
+>>>>>>> 5b71127 (xapp-24.12.15)
             newConv = {
               id: "conv-id-".concat(Date.now()),
               lastMessage: null,
@@ -112,6 +126,7 @@ function XCreateGroupConvComponent(_ref2) {
               datetime: date,
               photo: null
             };
+<<<<<<< HEAD
             setTimeout(function () {
               created(newConv);
               setLoad(false);
@@ -119,6 +134,30 @@ function XCreateGroupConvComponent(_ref2) {
               setSelectedUsers([]);
             }, 1000);
           case 3:
+=======
+            to_send = {
+              csrfmiddlewaretoken: token.csrfmiddlewaretoken,
+              project_id: projectID,
+              users: selectedUsers.map(function (u) {
+                return u.id;
+              }),
+              name: name
+            };
+            form = __.getFormData(to_send);
+            _context.next = 7;
+            return __.layoutRequest.post(url, form, 'json');
+          case 7:
+            req = _context.sent;
+            if (req.isSuccess) {
+              created(req.data);
+              setLoad(false);
+              setName("");
+              setSelectedUsers([]);
+            } else {
+              __.xAlert('Connection erreur', 'Verifier votre connection et re-éssayez plus tard.', 'danger');
+            }
+          case 9:
+>>>>>>> 5b71127 (xapp-24.12.15)
           case "end":
             return _context.stop();
         }
@@ -343,14 +382,23 @@ function XStartConvBoxComponent(_ref6) {
   };
   var request = /*#__PURE__*/function () {
     var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+<<<<<<< HEAD
       var date, data, formData, getToken, req, newConv;
+=======
+      var date, data, formData, getToken, req;
+>>>>>>> 5b71127 (xapp-24.12.15)
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             date = new Date();
             data = {
               message: value.trim(),
+<<<<<<< HEAD
               datetime: date.toString()
+=======
+              datetime: date.toString(),
+              timestamp: Date.now().toString()
+>>>>>>> 5b71127 (xapp-24.12.15)
             };
             formData = new FormData();
             if (!(typeof token == 'function')) {
@@ -389,6 +437,7 @@ function XStartConvBoxComponent(_ref6) {
             req = _context2.sent;
             if (req.isSuccess) {
               setSendingStatus('sent');
+<<<<<<< HEAD
             } else {
               // setSendingStatus('error');
               newConv = {
@@ -412,6 +461,10 @@ function XStartConvBoxComponent(_ref6) {
               getConversationJustCreated(newConv);
               setValue('');
               setSendingStatus('sent');
+=======
+              setValue('');
+              getConversationJustCreated();
+>>>>>>> 5b71127 (xapp-24.12.15)
             }
             setLoading(false);
             setDisabledInput(false);
@@ -499,7 +552,12 @@ function XConversationList(_ref12) {
   var data = _ref12.data,
     getName = _ref12.getName,
     open = _ref12.open,
+<<<<<<< HEAD
     createConvClick = _ref12.createConvClick;
+=======
+    createConvClick = _ref12.createConvClick,
+    createConvURL = _ref12.createConvURL;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var listClassName = "xpore xwi100per xhe100per";
   var searchStyle = {
     width: "90%"
@@ -561,9 +619,15 @@ function XConversationList(_ref12) {
   })), /*#__PURE__*/React.createElement("div", {
     className: "xpoab xwi100per",
     style: convStyle
+<<<<<<< HEAD
   }, data.map(function (conv, key) {
     return /*#__PURE__*/React.createElement(XConversation, {
       key: key,
+=======
+  }, data.map(function (conv) {
+    return /*#__PURE__*/React.createElement(XConversation, {
+      key: conv.crypted_id,
+>>>>>>> 5b71127 (xapp-24.12.15)
       open: open,
       rightClick: convOption,
       empty: conv.empty,
@@ -574,6 +638,10 @@ function XConversationList(_ref12) {
     });
   })), /*#__PURE__*/React.createElement(XCreateConversation, {
     style: createConv,
+<<<<<<< HEAD
+=======
+    url: createConvURL,
+>>>>>>> 5b71127 (xapp-24.12.15)
     onClick: createConvClick
   }), /*#__PURE__*/React.createElement("div", {
     onClick: closeOp,
@@ -692,6 +760,10 @@ function XMessageForm(_ref14) {
   var field = React.useRef(null);
   var form = React.useRef(null);
   var mother = React.useRef(null);
+<<<<<<< HEAD
+=======
+  var buttonSendText = React.useRef(null);
+>>>>>>> 5b71127 (xapp-24.12.15)
   var handleImageChange = function handleImageChange(e) {
     onPhotoChange(image.current.files[0]);
   };
@@ -732,6 +804,14 @@ function XMessageForm(_ref14) {
   var speechClick = function speechClick(e) {
     speech.current.click();
   };
+<<<<<<< HEAD
+=======
+  var keyup = function keyup(e) {
+    if (e.keyCode === 13) {
+      buttonSendText.current.click();
+    }
+  };
+>>>>>>> 5b71127 (xapp-24.12.15)
   return /*#__PURE__*/React.createElement("div", {
     className: messageFormClass,
     style: style,
@@ -770,6 +850,10 @@ function XMessageForm(_ref14) {
     ref: form
   }, /*#__PURE__*/React.createElement("textarea", {
     placeholder: "Text a message",
+<<<<<<< HEAD
+=======
+    onKeyUp: keyup,
+>>>>>>> 5b71127 (xapp-24.12.15)
     ref: field,
     onChange: onTextChange,
     value: value,
@@ -787,7 +871,12 @@ function XMessageForm(_ref14) {
     accept: ".mp3, .m4a",
     onChange: handleSpeechChange
   }), value.length > 0 ? /*#__PURE__*/React.createElement("button", {
+<<<<<<< HEAD
     type: "submit"
+=======
+    type: "submit",
+    ref: buttonSendText
+>>>>>>> 5b71127 (xapp-24.12.15)
   }, /*#__PURE__*/React.createElement("i", {
     className: "fa fa-paper-plane"
   })) : /*#__PURE__*/React.createElement("i", {
@@ -912,9 +1001,12 @@ function XConversation(_ref15) {
     }
     return " seen";
   }();
+<<<<<<< HEAD
   React.useEffect(function () {
     setTimeout(function () {}, 30000);
   }, []);
+=======
+>>>>>>> 5b71127 (xapp-24.12.15)
   var click = function click() {
     open(dataComplete);
   };
@@ -952,12 +1044,22 @@ function XMessageComponent(_ref16) {
     onSent = _ref16.onSent,
     token = _ref16.token,
     sendingUrl = _ref16.sendingUrl,
+<<<<<<< HEAD
     option = _ref16.option;
+=======
+    option = _ref16.option,
+    projectID = _ref16.projectID,
+    visual = _ref16.visual;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var messageContent = function () {
     if (message.text && message.video == undefined && message.audio == undefined && message.file == undefined && message.image == undefined) {
       return /*#__PURE__*/React.createElement(XTextMessage, {
         message: message,
         onSent: onSent,
+<<<<<<< HEAD
+=======
+        projectID: projectID,
+>>>>>>> 5b71127 (xapp-24.12.15)
         option: option,
         token: token,
         sendingUrl: sendingUrl
@@ -966,7 +1068,13 @@ function XMessageComponent(_ref16) {
       return /*#__PURE__*/React.createElement(XVideoMessage, {
         message: message,
         option: option,
+<<<<<<< HEAD
         onSent: onSent,
+=======
+        projectID: projectID,
+        onSent: onSent,
+        visual: visual,
+>>>>>>> 5b71127 (xapp-24.12.15)
         token: token,
         sendingUrl: sendingUrl
       });
@@ -975,6 +1083,10 @@ function XMessageComponent(_ref16) {
         message: message,
         option: option,
         onSent: onSent,
+<<<<<<< HEAD
+=======
+        projectID: projectID,
+>>>>>>> 5b71127 (xapp-24.12.15)
         token: token,
         sendingUrl: sendingUrl
       });
@@ -983,6 +1095,10 @@ function XMessageComponent(_ref16) {
         message: message,
         option: option,
         onSent: onSent,
+<<<<<<< HEAD
+=======
+        projectID: projectID,
+>>>>>>> 5b71127 (xapp-24.12.15)
         token: token,
         sendingUrl: sendingUrl
       });
@@ -991,6 +1107,11 @@ function XMessageComponent(_ref16) {
         message: message,
         option: option,
         onSent: onSent,
+<<<<<<< HEAD
+=======
+        visual: visual,
+        projectID: projectID,
+>>>>>>> 5b71127 (xapp-24.12.15)
         sendingUrl: sendingUrl,
         token: token
       });
@@ -1015,7 +1136,12 @@ function XTextMessageComponent(_ref17) {
     onSent = _ref17.onSent,
     token = _ref17.token,
     sendingUrl = _ref17.sendingUrl,
+<<<<<<< HEAD
     option = _ref17.option;
+=======
+    option = _ref17.option,
+    projectID = _ref17.projectID;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var _React$useState21 = React.useState(false),
     _React$useState22 = _slicedToArray(_React$useState21, 2),
     serverError = _React$useState22[0],
@@ -1035,8 +1161,16 @@ function XTextMessageComponent(_ref17) {
         case 0:
           setServerError(false);
           message_data = {
+<<<<<<< HEAD
             datetime: message.datetime,
             text: message.text
+=======
+            type: 'text',
+            datetime: message.datetime,
+            text: message.text,
+            projectID: projectID,
+            timestamp: Date.now().toString()
+>>>>>>> 5b71127 (xapp-24.12.15)
           };
           formData = new FormData();
           if (!(typeof token == 'function')) {
@@ -1073,6 +1207,7 @@ function XTextMessageComponent(_ref17) {
           return __.layoutRequest.post(sendingUrl, formData, 'json');
         case 16:
           response = _context3.sent;
+<<<<<<< HEAD
           setTimeout(function () {
             if (!response.isSuccess) {
               // setServerError(true);
@@ -1081,6 +1216,13 @@ function XTextMessageComponent(_ref17) {
               onSent(message.id, message);
             }
           }, 200);
+=======
+          if (response.isSuccess) {
+            onSent(message.id, response.data);
+          } else {
+            setServerError(true);
+          }
+>>>>>>> 5b71127 (xapp-24.12.15)
         case 18:
         case "end":
           return _context3.stop();
@@ -1151,9 +1293,14 @@ function XTextMessageComponent(_ref17) {
     }
   }();
   var messageOption = function messageOption(e) {
+<<<<<<< HEAD
     ;
     e.preventDefault();
     option();
+=======
+    e.preventDefault();
+    option(message);
+>>>>>>> 5b71127 (xapp-24.12.15)
   };
   var messageClick = function () {
     if (serverError) {
@@ -1206,7 +1353,13 @@ function XVideoMessageComponent(_ref23) {
   var message = _ref23.message,
     onSent = _ref23.onSent,
     token = _ref23.token,
+<<<<<<< HEAD
     sendingUrl = _ref23.sendingUrl;
+=======
+    sendingUrl = _ref23.sendingUrl,
+    option = _ref23.option,
+    projectID = _ref23.projectID;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var _React$useState25 = React.useState(false),
     _React$useState26 = _slicedToArray(_React$useState25, 2),
     serverError = _React$useState26[0],
@@ -1229,7 +1382,14 @@ function XVideoMessageComponent(_ref23) {
             datetime: message.datetime,
             video: message.video,
             size: message.video.size,
+<<<<<<< HEAD
             humanSize: message.size
+=======
+            humanSize: message.size,
+            projectID: projectID,
+            timestamp: Date.now().toString(),
+            type: 'video'
+>>>>>>> 5b71127 (xapp-24.12.15)
           };
           formData = new FormData();
           if (!(typeof token == 'function')) {
@@ -1266,6 +1426,7 @@ function XVideoMessageComponent(_ref23) {
           return __.layoutRequest.post(sendingUrl, formData, "json", uploading);
         case 16:
           response = _context4.sent;
+<<<<<<< HEAD
           setTimeout(function () {
             if (!response.isSuccess) {
               // setServerError(true);
@@ -1274,6 +1435,13 @@ function XVideoMessageComponent(_ref23) {
               onSent(message.id, message);
             }
           }, 200);
+=======
+          if (response.isSuccess) {
+            onSent(message.id, response.data);
+          } else {
+            setServerError(true);
+          }
+>>>>>>> 5b71127 (xapp-24.12.15)
         case 18:
         case "end":
           return _context4.stop();
@@ -1337,8 +1505,14 @@ function XVideoMessageComponent(_ref23) {
       return "";
     }
   }();
+<<<<<<< HEAD
   var messageOption = function messageOption() {
     // message option
+=======
+  var messageOption = function messageOption(e) {
+    e.preventDefault();
+    option(message);
+>>>>>>> 5b71127 (xapp-24.12.15)
   };
   var getTiming = function () {
     if (serverError) {
@@ -1375,7 +1549,11 @@ function XVideoMessageComponent(_ref23) {
   return /*#__PURE__*/React.createElement("div", {
     className: messageClassName,
     onContextMenu: messageOption,
+<<<<<<< HEAD
     id: message.id,
+=======
+    id: 'vid' + message.id,
+>>>>>>> 5b71127 (xapp-24.12.15)
     onClick: messageClick
   }, /*#__PURE__*/React.createElement("div", {
     className: "x-message-container"
@@ -1384,13 +1562,21 @@ function XVideoMessageComponent(_ref23) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "video-data"
   }, /*#__PURE__*/React.createElement("video", {
+<<<<<<< HEAD
     src: message.status == "sending" ? "" : URL.createObjectURL(message.video),
+=======
+    src: message.status == "sending" ? "" : message.video,
+>>>>>>> 5b71127 (xapp-24.12.15)
     preload: "metadata",
     poster: "video-poster.jpg",
     onPlay: onPlayVideo,
     onLoadedMetadata: onVideoLoadedMetadata,
     onTimeUpdate: onVideoTimeUpdated,
+<<<<<<< HEAD
     target: message.id,
+=======
+    target: 'vid' + message.id,
+>>>>>>> 5b71127 (xapp-24.12.15)
     onEnded: onEndVideo
   }), /*#__PURE__*/React.createElement("div", {
     className: "video-controls show"
@@ -1398,7 +1584,11 @@ function XVideoMessageComponent(_ref23) {
     className: "play-pause-video"
   }, /*#__PURE__*/React.createElement("div", {
     className: iconPlay,
+<<<<<<< HEAD
     target: message.id
+=======
+    target: 'vid' + message.id
+>>>>>>> 5b71127 (xapp-24.12.15)
   }, /*#__PURE__*/React.createElement("i", {
     className: "fa fa-play"
   })), /*#__PURE__*/React.createElement("div", {
@@ -1439,7 +1629,13 @@ function XAudioMessageComponent(_ref29) {
   var message = _ref29.message,
     onSent = _ref29.onSent,
     token = _ref29.token,
+<<<<<<< HEAD
     sendingUrl = _ref29.sendingUrl;
+=======
+    sendingUrl = _ref29.sendingUrl,
+    option = _ref29.option,
+    projectID = _ref29.projectID;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var _React$useState29 = React.useState(false),
     _React$useState30 = _slicedToArray(_React$useState29, 2),
     serverError = _React$useState30[0],
@@ -1462,7 +1658,14 @@ function XAudioMessageComponent(_ref29) {
             datetime: message.datetime,
             audio: message.audio,
             size: message.audio.size,
+<<<<<<< HEAD
             humanSize: message.size
+=======
+            humanSize: message.size,
+            projectID: projectID,
+            type: 'audio',
+            timestamp: Date.now().toString()
+>>>>>>> 5b71127 (xapp-24.12.15)
           };
           formData = new FormData();
           if (!(typeof token == 'function')) {
@@ -1499,6 +1702,7 @@ function XAudioMessageComponent(_ref29) {
           return __.layoutRequest.post(sendingUrl, formData, 'json', uploading);
         case 16:
           response = _context5.sent;
+<<<<<<< HEAD
           setTimeout(function () {
             if (!response.isSuccess) {
               // setServerError(true);
@@ -1507,6 +1711,13 @@ function XAudioMessageComponent(_ref29) {
               onSent(message.id, message);
             }
           }, 200);
+=======
+          if (response.isSuccess) {
+            onSent(message.id, response.data);
+          } else {
+            setServerError(true);
+          }
+>>>>>>> 5b71127 (xapp-24.12.15)
         case 18:
         case "end":
           return _context5.stop();
@@ -1580,8 +1791,14 @@ function XAudioMessageComponent(_ref29) {
       return "";
     }
   }();
+<<<<<<< HEAD
   var messageOption = function messageOption() {
     // messag option 
+=======
+  var messageOption = function messageOption(e) {
+    e.preventDefault();
+    option(message);
+>>>>>>> 5b71127 (xapp-24.12.15)
   };
   var messageClick = function () {
     if (serverError) {
@@ -1599,7 +1816,11 @@ function XAudioMessageComponent(_ref29) {
   return /*#__PURE__*/React.createElement("div", {
     className: messageClassName,
     onContextMenu: messageOption,
+<<<<<<< HEAD
     id: message.id,
+=======
+    id: 'aud' + message.id,
+>>>>>>> 5b71127 (xapp-24.12.15)
     onClick: messageClick
   }, /*#__PURE__*/React.createElement("div", {
     className: "x-message-container"
@@ -1609,7 +1830,11 @@ function XAudioMessageComponent(_ref29) {
     className: "speech-data"
   }, /*#__PURE__*/React.createElement("div", {
     className: message.status == "sending" ? "play-pause" : "play-pause can-play",
+<<<<<<< HEAD
     target: message.id
+=======
+    target: 'aud' + message.id
+>>>>>>> 5b71127 (xapp-24.12.15)
   }, /*#__PURE__*/React.createElement("i", {
     className: "fa fa-play"
   })), /*#__PURE__*/React.createElement("div", {
@@ -1618,6 +1843,7 @@ function XAudioMessageComponent(_ref29) {
     className: "progress-model"
   }), /*#__PURE__*/React.createElement("div", {
     className: "waves-contents"
+<<<<<<< HEAD
   }, /*#__PURE__*/React.createElement("span", {
     className: "waves-1 audio-waves"
   }, /*#__PURE__*/React.createElement("span", {
@@ -1699,6 +1925,20 @@ function XAudioMessageComponent(_ref29) {
     onPlay: onPlayAudio,
     onLoadedMetadata: onAudioLoadedMetadata,
     target: message.id,
+=======
+  }, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(function (number, key) {
+    return /*#__PURE__*/React.createElement("span", {
+      className: "waves-" + number + " audio-waves",
+      key: key
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "audio-progress"
+    }));
+  })))), /*#__PURE__*/React.createElement("audio", {
+    src: message.status == "sending" ? "" : message.audio,
+    onPlay: onPlayAudio,
+    onLoadedMetadata: onAudioLoadedMetadata,
+    target: 'aud' + message.id,
+>>>>>>> 5b71127 (xapp-24.12.15)
     onEnded: onEndAudio,
     onTimeUpdate: onAudioTimeUpdated
   }), /*#__PURE__*/React.createElement("div", {
@@ -1731,7 +1971,13 @@ function XFileMessageComponent(_ref35) {
   var message = _ref35.message,
     onSent = _ref35.onSent,
     token = _ref35.token,
+<<<<<<< HEAD
     sendingUrl = _ref35.sendingUrl;
+=======
+    sendingUrl = _ref35.sendingUrl,
+    option = _ref35.option,
+    projectID = _ref35.projectID;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var _React$useState33 = React.useState(false),
     _React$useState34 = _slicedToArray(_React$useState33, 2),
     serverError = _React$useState34[0],
@@ -1760,9 +2006,18 @@ function XFileMessageComponent(_ref35) {
           message_data = {
             datetime: message.datetime,
             file: message.file,
+<<<<<<< HEAD
             size: message.file.size,
             humanSize: message.size,
             extension: ext,
+=======
+            projectID: projectID,
+            size: message.file.size,
+            humanSize: message.size,
+            extension: ext,
+            timestamp: Date.now().toString(),
+            type: 'file',
+>>>>>>> 5b71127 (xapp-24.12.15)
             fileType: type.toLowerCase()
           };
           formData = new FormData();
@@ -1800,6 +2055,7 @@ function XFileMessageComponent(_ref35) {
           return __.layoutRequest.post(sendingUrl, formData, 'json', uploading);
         case 19:
           response = _context6.sent;
+<<<<<<< HEAD
           setTimeout(function () {
             if (!response.isSuccess) {
               // setServerError(true);
@@ -1808,6 +2064,13 @@ function XFileMessageComponent(_ref35) {
               onSent(message.id, message);
             }
           }, 200);
+=======
+          if (response.isSuccess) {
+            onSent(message.id, response.data);
+          } else {
+            setServerError(true);
+          }
+>>>>>>> 5b71127 (xapp-24.12.15)
         case 21:
         case "end":
           return _context6.stop();
@@ -1881,8 +2144,14 @@ function XFileMessageComponent(_ref35) {
       return "";
     }
   }();
+<<<<<<< HEAD
   var messageOption = function messageOption() {
     // message option
+=======
+  var messageOption = function messageOption(e) {
+    e.preventDefault();
+    option(message);
+>>>>>>> 5b71127 (xapp-24.12.15)
   };
   var messageClick = function () {
     if (serverError) {
@@ -1932,7 +2201,11 @@ function XFileMessageComponent(_ref35) {
     className: getFileIcon
   })), /*#__PURE__*/React.createElement("div", {
     className: "file-detail"
+<<<<<<< HEAD
   }, /*#__PURE__*/React.createElement("p", null, message.file.name), /*#__PURE__*/React.createElement("p", null, getFileName, message.size ? " | " + message.size : null))), /*#__PURE__*/React.createElement("div", {
+=======
+  }, /*#__PURE__*/React.createElement("p", null, message.status == 'sending' ? message.file.name : message.file), /*#__PURE__*/React.createElement("p", null, getFileName, message.size ? " | " + message.size : null))), /*#__PURE__*/React.createElement("div", {
+>>>>>>> 5b71127 (xapp-24.12.15)
     className: "time"
   }, /*#__PURE__*/React.createElement("span", {
     className: timeClassName,
@@ -1954,7 +2227,14 @@ function XImageMessageComponent(_ref41) {
   var message = _ref41.message,
     onSent = _ref41.onSent,
     token = _ref41.token,
+<<<<<<< HEAD
     sendingUrl = _ref41.sendingUrl;
+=======
+    sendingUrl = _ref41.sendingUrl,
+    option = _ref41.option,
+    projectID = _ref41.projectID,
+    visual = _ref41.visual;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var _React$useState37 = React.useState(false),
     _React$useState38 = _slicedToArray(_React$useState37, 2),
     serverError = _React$useState38[0],
@@ -1975,6 +2255,12 @@ function XImageMessageComponent(_ref41) {
           setServerError(false);
           message_data = {
             datetime: message.datetime,
+<<<<<<< HEAD
+=======
+            timestamp: Date.now().toString(),
+            type: 'image',
+            projectID: projectID,
+>>>>>>> 5b71127 (xapp-24.12.15)
             image: message.image,
             size: message.image.size,
             humanSize: message.size
@@ -2014,6 +2300,7 @@ function XImageMessageComponent(_ref41) {
           return __.layoutRequest.post(sendingUrl, formData, 'json', uploading);
         case 16:
           response = _context7.sent;
+<<<<<<< HEAD
           setTimeout(function () {
             if (!response.isSuccess) {
               // setServerError(true);
@@ -2022,6 +2309,14 @@ function XImageMessageComponent(_ref41) {
               onSent(message.id, message);
             }
           }, 200);
+=======
+          if (response.isSuccess) {
+            console.log(response.data);
+            onSent(message.id, response.data);
+          } else {
+            setServerError(true);
+          }
+>>>>>>> 5b71127 (xapp-24.12.15)
         case 18:
         case "end":
           return _context7.stop();
@@ -2092,12 +2387,26 @@ function XImageMessageComponent(_ref41) {
       return "";
     }
   }();
+<<<<<<< HEAD
   var messageOption = function messageOption() {
     // message option
+=======
+  var messageOption = function messageOption(e) {
+    e.preventDefault();
+    option(message);
+  };
+  var seePhoto = function seePhoto() {
+    visual(message);
+>>>>>>> 5b71127 (xapp-24.12.15)
   };
   var messageClick = function () {
     if (serverError) {
       return send;
+<<<<<<< HEAD
+=======
+    } else {
+      return seePhoto;
+>>>>>>> 5b71127 (xapp-24.12.15)
     }
   }();
   var messageClassName = "x-message " + position + getMessageStatus;
@@ -2118,7 +2427,11 @@ function XImageMessageComponent(_ref41) {
   }, profile, /*#__PURE__*/React.createElement("div", {
     className: "x-message-data photo"
   }, /*#__PURE__*/React.createElement("img", {
+<<<<<<< HEAD
     src: message.status == 'sending' ? URL.createObjectURL(message.image) : URL.createObjectURL(message.image)
+=======
+    src: message.status == 'sending' ? URL.createObjectURL(message.image) : message.image
+>>>>>>> 5b71127 (xapp-24.12.15)
   }), /*#__PURE__*/React.createElement("div", {
     className: "time"
   }, /*#__PURE__*/React.createElement("span", {
@@ -2140,11 +2453,26 @@ XImageMessage.propTypes = {
 function XOpenConversation(_ref47) {
   var style = _ref47.style,
     syncConversationList = _ref47.syncConversationList,
+<<<<<<< HEAD
     close = _ref47.close,
     convID = _ref47.convID,
     header = _ref47.header,
     messages = _ref47.messages,
     messageForm = _ref47.messageForm;
+=======
+    token = _ref47.token,
+    projectID = _ref47.projectID,
+    visual = _ref47.visual,
+    sentSound = _ref47.sentSound,
+    close = _ref47.close,
+    conversationData = _ref47.conversationData,
+    urlSending = _ref47.urlSending,
+    convID = _ref47.convID,
+    header = _ref47.header,
+    messages = _ref47.messages,
+    messageForm = _ref47.messageForm,
+    convCryptedID = _ref47.convCryptedID;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var _React$useState41 = React.useState(""),
     _React$useState42 = _slicedToArray(_React$useState41, 2),
     textValue = _React$useState42[0],
@@ -2179,6 +2507,51 @@ function XOpenConversation(_ref47) {
   var handlePhotoChange = function handlePhotoChange(val) {
     sendMessagePhoto(val);
   };
+<<<<<<< HEAD
+=======
+  var socket = null;
+  var getMessageSent = React.useMemo(function () {
+    return _toConsumableArray(messageSent);
+  }, [messageSent]);
+  React.useEffect(function () {
+    socket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + convCryptedID + '/');
+    socket.onclose = function (e) {
+      console.error("error when opening a convesation");
+    };
+    socket.onopen = function (e) {
+      console.log("conversation opened successfullly");
+    };
+    socket.onmessage = function (e) {
+      var response = JSON.parse(e.data);
+      if (Array.isArray(response)) {
+        setMessageSent(response);
+        showLastMessage();
+      } else {
+        if (response.action == 'new') {
+          var prev = messageSent.filter(function (m) {
+            return m.timestamp == response.timestamp;
+          });
+          if (prev.length == 0) {
+            setMessageSent(function (recent) {
+              return [].concat(_toConsumableArray(recent), [response]);
+            });
+            showLastMessage();
+            sentSound();
+          }
+        } else if (response.action == 'delete') {
+          setMessageSent(function (prev) {
+            return prev.filter(function (mess) {
+              return mess.id != response.id;
+            });
+          });
+        }
+      }
+    };
+    return function () {
+      return socket.close();
+    };
+  }, []);
+>>>>>>> 5b71127 (xapp-24.12.15)
   var sendMessagePhoto = function sendMessagePhoto(val) {
     var date = new Date();
     var newMessage = {
@@ -2259,12 +2632,55 @@ function XOpenConversation(_ref47) {
     var updatedListOne = messageSending.filter(function (item) {
       return item.id != fakeId;
     });
+<<<<<<< HEAD
     var newItem = _objectSpread(_objectSpread({}, itemToTransfer), {}, {
       status: "sent"
     });
     syncConversationList(convID, newItem);
     setMessageSending(updatedListOne);
     setMessageSent([].concat(_toConsumableArray(messageSent), [newItem]));
+=======
+    var newItem;
+    console.log(data);
+    if (data.type == 'text') {
+      newItem = _objectSpread(_objectSpread({}, itemToTransfer), {}, {
+        status: "sent",
+        id: data.id,
+        timestamp: data.timestamp
+      });
+    } else if (data.type == 'image') {
+      newItem = _objectSpread(_objectSpread({}, itemToTransfer), {}, {
+        status: "sent",
+        id: data.id,
+        timestamp: data.timestamp,
+        image: data.image
+      });
+    } else if (data.type == 'audio') {
+      newItem = _objectSpread(_objectSpread({}, itemToTransfer), {}, {
+        status: "sent",
+        id: data.id,
+        timestamp: data.timestamp,
+        audio: data.audio
+      });
+    } else if (data.type == 'file') {
+      newItem = _objectSpread(_objectSpread({}, itemToTransfer), {}, {
+        status: "sent",
+        id: data.id,
+        timestamp: data.timestamp,
+        file: data.file
+      });
+    } else if (data.type == 'video') {
+      newItem = _objectSpread(_objectSpread({}, itemToTransfer), {}, {
+        status: "sent",
+        id: data.id,
+        timestamp: data.timestamp,
+        video: data.video
+      });
+    }
+    setMessageSending(updatedListOne);
+    setMessageSent([].concat(_toConsumableArray(messageSent), [newItem]));
+    sentSound();
+>>>>>>> 5b71127 (xapp-24.12.15)
   };
   var sendMessageText = function sendMessageText() {
     var date = new Date();
@@ -2308,20 +2724,122 @@ function XOpenConversation(_ref47) {
         "behavior": "smooth"
       }, 200);
       closeMessageOption();
+<<<<<<< HEAD
     }, 1000);
+=======
+    }, 200);
+>>>>>>> 5b71127 (xapp-24.12.15)
   }, []);
   var appear = React.useRef(null);
   var conversationBoxClass = "xpore xwi100per xhe100per";
   var messOp = React.useRef(null);
   var black = React.useRef(null);
+<<<<<<< HEAD
   var openMessageOption = function openMessageOption(dataCom) {
     messOp.current.style.right = "0px";
     black.current.style.display = "block";
+=======
+  var _React$useState55 = React.useState(null),
+    _React$useState56 = _slicedToArray(_React$useState55, 2),
+    focusedMessageOption = _React$useState56[0],
+    setFocusedMessageOption = _React$useState56[1];
+  var openMessageOption = function openMessageOption(dataCom) {
+    messOp.current.style.right = "0px";
+    black.current.style.display = "block";
+    setFocusedMessageOption(dataCom);
+>>>>>>> 5b71127 (xapp-24.12.15)
   };
   var closeMessageOption = function closeMessageOption() {
     messOp.current.style.right = "-60%";
     black.current.style.display = "none";
   };
+<<<<<<< HEAD
+=======
+  var requestDeleteForMe = /*#__PURE__*/function () {
+    var _ref48 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(message_id) {
+      var url, to_send, formData, req;
+      return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+        while (1) switch (_context8.prev = _context8.next) {
+          case 0:
+            url = '/delete_message_for_me/';
+            to_send = {
+              id: focusedMessageOption.id,
+              room_id: convCryptedID,
+              csrfmiddlewaretoken: token.csrfmiddlewaretoken
+            };
+            formData = new FormData();
+            Object.entries(to_send).forEach(function (_ref49) {
+              var _ref50 = _slicedToArray(_ref49, 2),
+                key = _ref50[0],
+                val = _ref50[1];
+              formData.append(key, val);
+            });
+            _context8.next = 6;
+            return __.layoutRequest.post(url, formData, 'json');
+          case 6:
+            req = _context8.sent;
+            if (req.isSuccess) {
+              console.log("");
+            } else {
+              __.xAlert('Connection erreur', "Verifier votre connection s'il vous plaît...", 'danger');
+            }
+          case 8:
+          case "end":
+            return _context8.stop();
+        }
+      }, _callee8);
+    }));
+    return function requestDeleteForMe(_x) {
+      return _ref48.apply(this, arguments);
+    };
+  }();
+  var requestDeleteForEveryone = /*#__PURE__*/function () {
+    var _ref51 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(message_id) {
+      var url, to_send, formData, req;
+      return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+        while (1) switch (_context9.prev = _context9.next) {
+          case 0:
+            url = '/delete_for_everyone/';
+            to_send = {
+              id: focusedMessageOption.id,
+              room_id: convCryptedID,
+              csrfmiddlewaretoken: token.csrfmiddlewaretoken
+            };
+            formData = new FormData();
+            Object.entries(to_send).forEach(function (_ref52) {
+              var _ref53 = _slicedToArray(_ref52, 2),
+                key = _ref53[0],
+                val = _ref53[1];
+              formData.append(key, val);
+            });
+            _context9.next = 6;
+            return __.layoutRequest.post(url, formData, 'json');
+          case 6:
+            req = _context9.sent;
+            if (req.isSuccess) {
+              console.log("");
+            } else {
+              __.xAlert('Connection erreur', "Verifier votre connection s'il vous plaît...", 'danger');
+            }
+          case 8:
+          case "end":
+            return _context9.stop();
+        }
+      }, _callee9);
+    }));
+    return function requestDeleteForEveryone(_x2) {
+      return _ref51.apply(this, arguments);
+    };
+  }();
+  var deleteForEveryone = function deleteForEveryone() {
+    requestDeleteForEveryone(focusedMessageOption.id);
+    closeMessageOption();
+  };
+  var deleteForMe = function deleteForMe() {
+    requestDeleteForMe(focusedMessageOption.id);
+    closeMessageOption();
+  };
+>>>>>>> 5b71127 (xapp-24.12.15)
   var noneFunc = function noneFunc(xx) {};
   return /*#__PURE__*/React.createElement("div", {
     className: conversationBoxClass
@@ -2334,7 +2852,11 @@ function XOpenConversation(_ref47) {
     className: "x-message-option xpoab"
   }, /*#__PURE__*/React.createElement("p", {
     className: "xfosi20 xfowebo title-message-option"
+<<<<<<< HEAD
   }, "Option de message:"), /*#__PURE__*/React.createElement("div", {
+=======
+  }, "Option de message:"), focusedMessageOption != null && focusedMessageOption.text ? /*#__PURE__*/React.createElement("div", {
+>>>>>>> 5b71127 (xapp-24.12.15)
     className: "each-conv-option x-center xalitce xhe55 xdigr xwi90per x-pointer"
   }, /*#__PURE__*/React.createElement("div", {
     className: "x-child-center x-square-40"
@@ -2344,8 +2866,27 @@ function XOpenConversation(_ref47) {
     className: ""
   }, /*#__PURE__*/React.createElement("p", {
     className: "xfosi12 xfowebo"
+<<<<<<< HEAD
   }, "Copier"))), /*#__PURE__*/React.createElement("div", {
     className: "each-conv-option x-center xalitce xhe55 xdigr xwi90per x-pointer"
+=======
+  }, "Copier"))) : null, focusedMessageOption != null && (focusedMessageOption.image || focusedMessageOption.video) ? /*#__PURE__*/React.createElement("div", {
+    className: "each-conv-option x-center xalitce xhe55 xdigr xwi90per x-pointer",
+    onClick: function onClick() {
+      return visual(focusedMessageOption);
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "x-child-center x-square-40"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fa fa-expand xfosi22"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: ""
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "xfosi12 xfowebo"
+  }, "Ouvrez en grand angle"))) : null, /*#__PURE__*/React.createElement("div", {
+    className: "each-conv-option x-center xalitce xhe55 xdigr xwi90per x-pointer",
+    onClick: deleteForMe
+>>>>>>> 5b71127 (xapp-24.12.15)
   }, /*#__PURE__*/React.createElement("div", {
     className: "x-child-center x-square-40"
   }, /*#__PURE__*/React.createElement("i", {
@@ -2354,8 +2895,14 @@ function XOpenConversation(_ref47) {
     className: ""
   }, /*#__PURE__*/React.createElement("p", {
     className: "x-text-danger xfosi12 xfowebo"
+<<<<<<< HEAD
   }, "Supprimer pour moi"))), /*#__PURE__*/React.createElement("div", {
     className: "each-conv-option x-center xalitce xhe55 xdigr xwi90per x-pointer"
+=======
+  }, "Supprimer pour moi"))), focusedMessageOption != null && focusedMessageOption.isMyMessage == true ? /*#__PURE__*/React.createElement("div", {
+    className: "each-conv-option x-center xalitce xhe55 xdigr xwi90per x-pointer",
+    onClick: deleteForEveryone
+>>>>>>> 5b71127 (xapp-24.12.15)
   }, /*#__PURE__*/React.createElement("div", {
     className: "x-child-center x-square-40"
   }, /*#__PURE__*/React.createElement("i", {
@@ -2364,7 +2911,11 @@ function XOpenConversation(_ref47) {
     className: ""
   }, /*#__PURE__*/React.createElement("p", {
     className: "x-text-danger xfosi12 xfowebo"
+<<<<<<< HEAD
   }, "Supprimer pour tous le monde"))), /*#__PURE__*/React.createElement("div", {
+=======
+  }, "Supprimer pour tous le monde"))) : null, /*#__PURE__*/React.createElement("div", {
+>>>>>>> 5b71127 (xapp-24.12.15)
     onClick: closeMessageOption,
     className: "each-conv-option x-center xalitce xhe55 xdigr xwi90per x-pointer"
   }, /*#__PURE__*/React.createElement("div", {
@@ -2380,17 +2931,38 @@ function XOpenConversation(_ref47) {
     data: header,
     style: headerStyle
   }), /*#__PURE__*/React.createElement("div", {
+<<<<<<< HEAD
     className: "x-all-messages xpoab xwi100per",
     style: allMessageStyle
   }, messageSent.map(function (message, key) {
     return /*#__PURE__*/React.createElement(XMessage, {
       key: key,
       message: message,
+=======
+    className: "x-all-messages x-all-messages-display xpoab xwi100per",
+    style: allMessageStyle
+  }, messageSent.map(function (message) {
+    return /*#__PURE__*/React.createElement(XMessage, {
+      sendingUrl: urlSending,
+      key: message.id,
+      visual: visual,
+      projectID: projectID,
+      message: message,
+      token: token,
+>>>>>>> 5b71127 (xapp-24.12.15)
       option: openMessageOption
     });
   }), messageSending.map(function (message, key) {
     return /*#__PURE__*/React.createElement(XMessage, {
+<<<<<<< HEAD
       key: key,
+=======
+      sendingUrl: urlSending,
+      key: key,
+      token: token,
+      visual: visual,
+      projectID: projectID,
+>>>>>>> 5b71127 (xapp-24.12.15)
       onSent: handleMessageSent,
       message: message
     });
@@ -2412,7 +2984,13 @@ XOpenConversation.defaultProps = {
   header: {},
   messageForm: {},
   messages: {},
+<<<<<<< HEAD
   style: {}
+=======
+  style: {},
+  sentSound: function sentSound() {},
+  newMessageSound: function newMessageSound() {}
+>>>>>>> 5b71127 (xapp-24.12.15)
 };
 XOpenConversation.propTypes = {
   header: PropTypes.object,

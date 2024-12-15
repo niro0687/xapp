@@ -918,6 +918,7 @@ function XShowPassword(_ref14) {
     className: dataClass
   }));
 }
+<<<<<<< HEAD
 function XField(_ref15) {
   var icon = _ref15.icon,
     style = _ref15.style,
@@ -935,15 +936,153 @@ function XField(_ref15) {
     _React$useState12 = _slicedToArray(_React$useState11, 2),
     inputType = _React$useState12[0],
     setInputType = _React$useState12[1];
+=======
+function XSelect(_ref15) {
+  var br = _ref15.br,
+    style = _ref15.style,
+    xonfocus = _ref15.xonfocus,
+    children = _ref15.children,
+    value = _ref15.value,
+    onChange = _ref15.onChange,
+    center = _ref15.center,
+    multiple = _ref15.multiple,
+    className = _ref15.className;
+  var getBackground = React.useMemo(function () {
+    if (style.background) {
+      return ' ';
+    }
+    return ' x-field-has-bg';
+  });
+  var getBoxCenter = React.useMemo(function () {
+    if (center) {
+      return ' x-center';
+    }
+    return ' ';
+  });
+  var borderRadius = " xbora" + br;
+  var finalClassName = "x-select " + borderRadius + getBackground + getBoxCenter + " " + className;
+  return /*#__PURE__*/React.createElement("div", {
+    className: finalClassName,
+    xonfocus: xonfocus,
+    multiple: multiple,
+    style: style
+  }, /*#__PURE__*/React.createElement("select", {
+    name: "",
+    id: "",
+    value: value,
+    onChange: onChange
+  }, children));
+}
+XSelect.defaultProps = {
+  style: {},
+  br: 12,
+  multiple: false,
+  center: false,
+  className: "",
+  onChange: function onChange() {},
+  xonfocus: 'x-soft-shadow-bold-focus'
+};
+function XTextarea(_ref16) {
+  var style = _ref16.style,
+    br = _ref16.br,
+    children = _ref16.children,
+    center = _ref16.center,
+    onChange = _ref16.onChange,
+    xonfocus = _ref16.xonfocus,
+    className = _ref16.className;
+  var _React$useState11 = React.useState(''),
+    _React$useState12 = _slicedToArray(_React$useState11, 2),
+    value = _React$useState12[0],
+    setValue = _React$useState12[1];
+  var handleValueChanged = function handleValueChanged(e) {
+    setValue(e.target.value);
+    onChange(e.target.value);
+  };
+  var getBackground = React.useMemo(function () {
+    if (style.background) {
+      return ' ';
+    }
+    return ' x-field-has-bg';
+  });
+  var borderRadius = " xbora" + br;
+  var parentStyle = React.useMemo(function () {
+    return _objectSpread(_objectSpread({}, style), {}, {
+      height: 'none'
+    });
+  });
+  var childStyle = React.useMemo(function () {
+    if (style && style.height == undefined) {
+      return {
+        height: '100px'
+      };
+    } else {
+      return {
+        height: style.height
+      };
+    }
+  });
+  var getBoxCenter = React.useMemo(function () {
+    if (center) {
+      return ' x-center';
+    }
+    return ' ';
+  });
+  var finalClassName = "x-textarea " + borderRadius + getBackground + getBoxCenter + ' ' + className;
+  return /*#__PURE__*/React.createElement("div", {
+    className: finalClassName,
+    style: parentStyle,
+    xonfocus: xonfocus
+  }, /*#__PURE__*/React.createElement("textarea", {
+    className: "xlihe5",
+    onChange: handleValueChanged,
+    placeholder: children,
+    style: childStyle
+  }));
+}
+XTextarea.defaultProps = {
+  style: {
+    height: '100px'
+  },
+  br: 12,
+  center: false,
+  onChange: function onChange() {},
+  className: '',
+  xonfocus: 'x-soft-shadow-bold-focus'
+};
+function XField(_ref17) {
+  var icon = _ref17.icon,
+    style = _ref17.style,
+    children = _ref17.children,
+    xOnFocus = _ref17.xOnFocus,
+    bd = _ref17.bd,
+    type = _ref17.type,
+    className = _ref17.className,
+    value = _ref17.value,
+    onChange = _ref17.onChange,
+    xonfocus = _ref17.xonfocus,
+    center = _ref17.center,
+    fieldStatus = _ref17.fieldStatus;
+  var _React$useState13 = React.useState(type),
+    _React$useState14 = _slicedToArray(_React$useState13, 2),
+    inputType = _React$useState14[0],
+    setInputType = _React$useState14[1];
+>>>>>>> 5b71127 (xapp-24.12.15)
   var showPassword = function showPassword() {
     setInputType(function () {
       return inputType == 'password' ? 'text' : 'password';
     });
   };
+<<<<<<< HEAD
   var _React$useState13 = React.useState(0),
     _React$useState14 = _slicedToArray(_React$useState13, 2),
     rendu = _React$useState14[0],
     setRendu = _React$useState14[1];
+=======
+  var _React$useState15 = React.useState(0),
+    _React$useState16 = _slicedToArray(_React$useState15, 2),
+    rendu = _React$useState16[0],
+    setRendu = _React$useState16[1];
+>>>>>>> 5b71127 (xapp-24.12.15)
   var field = function () {
     if (icon == '') {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(XBaseField, {
@@ -1023,11 +1162,19 @@ XField.propTypes = {
   onChange: PropTypes.func,
   className: PropTypes.string
 };
+<<<<<<< HEAD
 function XArrowButtonLoad(_ref16) {
   var children = _ref16.children,
     color = _ref16.color,
     w = _ref16.w,
     weight = _ref16.weight;
+=======
+function XArrowButtonLoad(_ref18) {
+  var children = _ref18.children,
+    color = _ref18.color,
+    w = _ref18.w,
+    weight = _ref18.weight;
+>>>>>>> 5b71127 (xapp-24.12.15)
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "x-btn-text"
   }, /*#__PURE__*/React.createElement("button", null, children)), /*#__PURE__*/React.createElement("div", {
@@ -1038,6 +1185,7 @@ function XArrowButtonLoad(_ref16) {
     weight: weight
   })));
 }
+<<<<<<< HEAD
 function XButtonLoadableComponent(_ref17) {
   var type = _ref17.type,
     w = _ref17.w,
@@ -1058,6 +1206,28 @@ function XButtonLoadableComponent(_ref17) {
     square = _ref17.square,
     load = _ref17.load,
     loadText = _ref17.loadText;
+=======
+function XButtonLoadableComponent(_ref19) {
+  var type = _ref19.type,
+    w = _ref19.w,
+    br = _ref19.br,
+    center = _ref19.center,
+    icon = _ref19.icon,
+    unit = _ref19.unit,
+    className = _ref19.className,
+    state = _ref19.state,
+    onClickFunc = _ref19.onClickFunc,
+    style = _ref19.style,
+    disabled = _ref19.disabled,
+    children = _ref19.children,
+    loadingWidth = _ref19.loadingWidth,
+    loadingCircularWeight = _ref19.loadingCircularWeight,
+    loadingColor = _ref19.loadingColor,
+    shadow = _ref19.shadow,
+    square = _ref19.square,
+    load = _ref19.load,
+    loadText = _ref19.loadText;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var availableStateLoad = ['primary', 'none', 'danger', 'success', 'warning'];
   var widthLoad = function () {
     if (type != 'icon') {
@@ -1181,24 +1351,41 @@ XButtonLoadable.propTypes = (_XButtonLoadable$prop = {
   style: PropTypes.object,
   loadText: PropTypes.string
 }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_XButtonLoadable$prop, "center", PropTypes.bool), "loadingWidt", PropTypes.number), "unit", PropTypes.string), "disabledColor", PropTypes.string), "loadingColor", PropTypes.string), "loadingCircularWeight", PropTypes.number), "disabled", PropTypes.bool), "icon", PropTypes.string), "className", PropTypes.string), "onClickFunc", PropTypes.func), _defineProperty(_XButtonLoadable$prop, "children", PropTypes.string));
+<<<<<<< HEAD
 function XIconButtonComponent(_ref18) {
   var name = _ref18.name;
+=======
+function XIconButtonComponent(_ref20) {
+  var name = _ref20.name;
+>>>>>>> 5b71127 (xapp-24.12.15)
   return /*#__PURE__*/React.createElement("i", {
     className: name
   });
 }
 var XIconButton = React.memo(XIconButtonComponent);
+<<<<<<< HEAD
 function XSimpleButtonComponent(_ref19) {
   var children = _ref19.children,
     disabled = _ref19.disabled;
+=======
+function XSimpleButtonComponent(_ref21) {
+  var children = _ref21.children,
+    disabled = _ref21.disabled;
+>>>>>>> 5b71127 (xapp-24.12.15)
   return /*#__PURE__*/React.createElement("button", {
     disabled: disabled
   }, children);
 }
 var XSimpleButton = React.memo(XSimpleButtonComponent);
+<<<<<<< HEAD
 function XArrowButtonComponent(_ref20) {
   var children = _ref20.children,
     disabled = _ref20.disabled;
+=======
+function XArrowButtonComponent(_ref22) {
+  var children = _ref22.children,
+    disabled = _ref22.disabled;
+>>>>>>> 5b71127 (xapp-24.12.15)
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "x-btn-text"
   }, /*#__PURE__*/React.createElement("button", {
@@ -1210,6 +1397,7 @@ function XArrowButtonComponent(_ref20) {
   })));
 }
 var XArrowButton = React.memo(XArrowButtonComponent);
+<<<<<<< HEAD
 function XButtonComponent(_ref21) {
   var type = _ref21.type,
     w = _ref21.w,
@@ -1225,6 +1413,23 @@ function XButtonComponent(_ref21) {
     disabled = _ref21.disabled,
     shadow = _ref21.shadow,
     square = _ref21.square;
+=======
+function XButtonComponent(_ref23) {
+  var type = _ref23.type,
+    w = _ref23.w,
+    br = _ref23.br,
+    center = _ref23.center,
+    icon = _ref23.icon,
+    unit = _ref23.unit,
+    className = _ref23.className,
+    state = _ref23.state,
+    children = _ref23.children,
+    onClickFunc = _ref23.onClickFunc,
+    style = _ref23.style,
+    disabled = _ref23.disabled,
+    shadow = _ref23.shadow,
+    square = _ref23.square;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var availableState = ['primary', 'none', 'danger', 'success', 'warning'];
   var width = function () {
     if (type != 'icon') {
@@ -1326,11 +1531,19 @@ XButton.propTypes = _defineProperty(_defineProperty(_defineProperty(_definePrope
   center: PropTypes.bool,
   style: PropTypes.object
 }, "center", PropTypes.bool), "unit", PropTypes.string), "disabledColor", PropTypes.string), "disabled", PropTypes.bool), "icon", PropTypes.string), "className", PropTypes.string), "onClickFunc", PropTypes.func), "children", PropTypes.string);
+<<<<<<< HEAD
 function XLoadingComponent(_ref22) {
   var w = _ref22.w,
     color = _ref22.color,
     weight = _ref22.weight,
     center = _ref22.center;
+=======
+function XLoadingComponent(_ref24) {
+  var w = _ref24.w,
+    color = _ref24.color,
+    weight = _ref24.weight,
+    center = _ref24.center;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var width = " xwi" + w;
   var centerLoading = center ? " x-center" : "";
   var loadingClass = "x-circular-loader" + width + centerLoading;
@@ -1369,6 +1582,7 @@ XLoading.propTypes = {
   color: PropTypes.string,
   weight: PropTypes.number
 };
+<<<<<<< HEAD
 function XNavBarV(_ref23) {
   var menus = _ref23.menus,
     menusStat = _ref23.menusStat,
@@ -1377,6 +1591,16 @@ function XNavBarV(_ref23) {
     focus = _ref23.focus,
     blur = _ref23.blur,
     focusBackground = _ref23.focusBackground;
+=======
+function XNavBarV(_ref25) {
+  var menus = _ref25.menus,
+    menusStat = _ref25.menusStat,
+    slider = _ref25.slider,
+    id = _ref25.id,
+    focus = _ref25.focus,
+    blur = _ref25.blur,
+    focusBackground = _ref25.focusBackground;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var getType = function () {
     if (menusStat == 'name') {
       return "x-nav-text-only";
@@ -1428,10 +1652,17 @@ XNavBarH.propTypes = {
   focus: PropTypes.string,
   blur: PropTypes.string
 };
+<<<<<<< HEAD
 function TextOnly(_ref24) {
   var text = _ref24.text,
     active = _ref24.active,
     id = _ref24.id;
+=======
+function TextOnly(_ref26) {
+  var text = _ref26.text,
+    active = _ref26.active,
+    id = _ref26.id;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var getNavItemClass = function () {
     if (active) {
       return "x-nav-active";
@@ -1445,11 +1676,19 @@ function TextOnly(_ref24) {
     id: id
   }, /*#__PURE__*/React.createElement("span", null, text));
 }
+<<<<<<< HEAD
 function Both(_ref25) {
   var text = _ref25.text,
     icon = _ref25.icon,
     active = _ref25.active,
     id = _ref25.id;
+=======
+function Both(_ref27) {
+  var text = _ref27.text,
+    icon = _ref27.icon,
+    active = _ref27.active,
+    id = _ref27.id;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var getNavItemClass = function () {
     if (active) {
       return "x-nav-active";
@@ -1467,11 +1706,19 @@ function Both(_ref25) {
     className: icon
   })), /*#__PURE__*/React.createElement("span", null, text));
 }
+<<<<<<< HEAD
 function BothH(_ref26) {
   var text = _ref26.text,
     icon = _ref26.icon,
     active = _ref26.active,
     id = _ref26.id;
+=======
+function BothH(_ref28) {
+  var text = _ref28.text,
+    icon = _ref28.icon,
+    active = _ref28.active,
+    id = _ref28.id;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var getNavItemClass = function () {
     if (active) {
       return "x-h-nav-active";
@@ -1489,10 +1736,17 @@ function BothH(_ref26) {
     className: icon
   })), /*#__PURE__*/React.createElement("span", null, text));
 }
+<<<<<<< HEAD
 function Icon(_ref27) {
   var icon = _ref27.icon,
     active = _ref27.active,
     id = _ref27.id;
+=======
+function Icon(_ref29) {
+  var icon = _ref29.icon,
+    active = _ref29.active,
+    id = _ref29.id;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var getNavItemClass = function () {
     if (active) {
       return "x-nav-active";
@@ -1590,12 +1844,21 @@ function getHRows(list) {
   }
   return rows;
 }
+<<<<<<< HEAD
 function XNavBarH(_ref28) {
   var menus = _ref28.menus,
     id = _ref28.id,
     focus = _ref28.focus,
     blur = _ref28.blur,
     focusBackground = _ref28.focusBackground;
+=======
+function XNavBarH(_ref30) {
+  var menus = _ref30.menus,
+    id = _ref30.id,
+    focus = _ref30.focus,
+    blur = _ref30.blur,
+    focusBackground = _ref30.focusBackground;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var rows = React.useMemo(function () {
     return getHRows(menus);
   }, []);
@@ -1615,6 +1878,7 @@ function XNavBarH(_ref28) {
     className: "x-h-slider"
   }), rows);
 }
+<<<<<<< HEAD
 function XNavigationBar(_ref29) {
   var align = _ref29.align,
     slider = _ref29.slider,
@@ -1624,6 +1888,17 @@ function XNavigationBar(_ref29) {
     focusColor = _ref29.focusColor,
     focusBackground = _ref29.focusBackground,
     blurColor = _ref29.blurColor;
+=======
+function XNavigationBar(_ref31) {
+  var align = _ref31.align,
+    slider = _ref31.slider,
+    menus = _ref31.menus,
+    menusStat = _ref31.menusStat,
+    navId = _ref31.navId,
+    focusColor = _ref31.focusColor,
+    focusBackground = _ref31.focusBackground,
+    blurColor = _ref31.blurColor;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var getNavContent = function () {
     if (align == 'v') {
       if (menusStat == 'name') {
@@ -1673,11 +1948,19 @@ XNavigationBar.propTypes = {
   navId: PropTypes.string.isRequired,
   menus: PropTypes.array
 };
+<<<<<<< HEAD
 function XIconInfo(_ref30) {
   var className = _ref30.className,
     icon = _ref30.icon,
     text = _ref30.text,
     children = _ref30.children;
+=======
+function XIconInfo(_ref32) {
+  var className = _ref32.className,
+    icon = _ref32.icon,
+    text = _ref32.text,
+    children = _ref32.children;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var parentClassName = "x-icon-info " + className;
   var textClassName = text.className ? text.className : "";
   var iconClassName = icon.className ? "icon xmari5 " + icon.className : "icon xmari5";
@@ -1709,12 +1992,21 @@ XIconInfo.propTypes = {
   children: PropTypes.string.isRequired,
   text: PropTypes.object
 };
+<<<<<<< HEAD
 function XUploadingProgressComponent(_ref31) {
   var width = _ref31.width,
     color = _ref31.color,
     id = _ref31.id,
     weight = _ref31.weight,
     className = _ref31.className;
+=======
+function XUploadingProgressComponent(_ref33) {
+  var width = _ref33.width,
+    color = _ref33.color,
+    id = _ref33.id,
+    weight = _ref33.weight,
+    className = _ref33.className;
+>>>>>>> 5b71127 (xapp-24.12.15)
   var boxStyle = React.useMemo(function () {
     return {
       width: width
